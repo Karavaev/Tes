@@ -24,13 +24,8 @@ class Route {
         }
 
         // добавляем префиксы
-        $model_name = 'Model_' . $controller_name;
         $controller_name = 'Controller_' . $controller_name;
         $action_name = 'Action_' . $action_name;
-
-        if (file_exists(Q_PATH . '/application/models/' . $model_name . '.php')) {
-            include Q_PATH . '/application/models/' . $model_name . '.php';
-        }
 
         if (file_exists(Q_PATH . '/application/controllers/' . $controller_name . '.php')) {
             include Q_PATH . '/application/controllers/' . $controller_name . '.php';
