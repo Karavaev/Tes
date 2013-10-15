@@ -22,6 +22,13 @@ class Route {
         if (!empty($route_array[2])) {
             $action_name = $route_array[2];
         }
+        
+        if (!empty($route_array[3])) {            
+            $action_parameters[] = $route_array[3];
+        }
+        if (!empty($route_array[4])) {
+            $action_parameters[] = $route_array[4];
+        }
 
         // добавляем префиксы
         $controller_name = 'Controller_' . $controller_name;
@@ -36,7 +43,8 @@ class Route {
         }
 
         $controller = new $controller_name();
-        $controller->$action_name();
+        echo $action_parameters[0];
+        $controller->$action_name($action_parameters);
     }
 
 }
