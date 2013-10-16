@@ -43,7 +43,6 @@ class Route {
         }
 
         $controller = new $controller_name();
-        echo $action_parameters[0];
         $controller->$action_name($action_parameters);
     }
 
