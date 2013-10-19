@@ -7,10 +7,22 @@ class Controller_index extends Controller {
     }
 
     public function Action_index($parameters = array()) {
-        include Q_PATH . '/application/controllers/Controller_bd.php';
 
         $view = new View();
         $view->generate('index', Singleton::getInstance()->Read($parameters[0]));
+    }
+
+    public function Action_quote() {
+        if ($_POST['action'] == 'izmenenie') {
+            // Singleton::getInstance()->Write($ooooo); 
+            Singleton::getInstance()->Rating(array($_POST['id'], $_POST['znak']));
+        }
+    }
+
+    public function Action_obnov() {
+        if ($_POST['action'] == 'obn') {
+            $this->Action_index();
+        }
     }
 
 }

@@ -1,17 +1,19 @@
 <?php
 
-
 class Controller_write {
-
-    function __construct() {
-     
-    }
 
     public function Action_index() {
         $view = new View();
-        $view->generate('write');           
-
+        $view->generate('write');
     }
 
+    public function Action_write() {
+
+
+        if ($_POST['action'] == 'add_message') {
+            $ooooo = $_POST['message_text'];
+            Singleton::getInstance()->Write($ooooo);
+        }
+    }
 
 }
