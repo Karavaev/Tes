@@ -9,13 +9,12 @@ class Controller_index extends Controller {
     public function Action_index($parameters = array()) {
 
         $view = new View();
-        $view->generate('index', Singleton::getInstance()->Read($parameters[0]));
+        $view->generate('index', ClassSingleton::getInstance()->Read($parameters[0]));
     }
 
     public function Action_quote() {
         if ($_POST['action'] == 'izmenenie') {
-            // Singleton::getInstance()->Write($ooooo); 
-            Singleton::getInstance()->Rating(array($_POST['id'], $_POST['znak']));
+            ClassSingleton::getInstance()->Rating(array($_POST['id'], $_POST['znak']));
         }
     }
 
