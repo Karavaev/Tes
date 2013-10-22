@@ -1,7 +1,3 @@
-
-
-
-
 <script text="text/javascript" src="../../js/rating.js"></script>
 <?php
 echo ' <a  href=' . $_SERVER['php_self'] . '/write/index> Запись сообщений </a> <br/>';
@@ -23,8 +19,8 @@ echo '<h1>Постраничный вывод информации</h1>';
 <?php foreach ($data[1] as $arr) { ?>
     <?php
     echo '<a href="#" onclick="rating(' . "'" . $arr[1] . "'" .
-    '); return false;">+</a> ' . $arr[2] . '<a href="#" onclick="ratint(' .
-    "'" . $arr[1] . "'" . '); return false;">-</a> ';
+        '); return false;">+</a> ' . $arr[2] . '<a href="#" onclick="ratint(' .
+        "'" . $arr[1] . "'" . '); return false;">-</a> ';
     ?>
     <p><?php
         echo $arr[0];

@@ -1,18 +1,21 @@
 <?php
 
-class Controller_write {
+class Controller_write
+{
 
-    public function Action_index() {
+    public function Action_index()
+    {
         $view = new View();
         $view->generate('write');
     }
 
-    public function Action_write() {
-
-
-        if ($_POST['action'] == 'add_message') {
-            $text = $_POST['message_text'];
-            ClassSingleton::getInstance()->Write($text);
+    public function Action_write()
+    {        
+        if (isset($_POST['action']) && $_POST['action'] == 'add_message'){
+            if (isset($_POST['message_text'])){
+                $bash = new ClassBash();
+                $bash->Write($_POST['message_text']);
+            }
         }
     }
 

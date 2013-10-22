@@ -1,12 +1,15 @@
 <?php
 
-class Route {
+class Route
+{
 
-    function __construct() {
-        
+    function __construct()
+    {
+
     }
 
-    public static function Start() {
+    public static function Start()
+    {
         //назначение параметров по умолчанию
         $controller_name = 'index';
         $action_name = 'index';
@@ -22,8 +25,8 @@ class Route {
         if (!empty($route_array[2])) {
             $action_name = $route_array[2];
         }
-        
-        if (!empty($route_array[3])) {            
+
+        if (!empty($route_array[3])) {
             $action_parameters[] = $route_array[3];
         }
         if (!empty($route_array[4])) {
