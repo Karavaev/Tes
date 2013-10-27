@@ -1,8 +1,8 @@
 <?php
-include Q_PATH . '/application/header.php';
-include Q_PATH . '/application/core/controller.php';
-include Q_PATH . '/application/core/view.php';
-include Q_PATH . '/application/controllers/Controller_bd.php';
-include Q_PATH . '/application/core/route.php';
+include Q_PATH . '/application/core/BaseController.php';
+include Q_PATH . '/application/core/web/WebController.php';
+include Q_PATH . '/application/core/bd/bd.php';
+include Q_PATH . '/application/controllers/BashController.php';
 
-Route::Start();
+// TODO Подключить все классы системы
+

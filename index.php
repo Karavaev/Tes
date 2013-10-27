@@ -1,3 +1,12 @@
 <?php
-define("Q_PATH",dirname(__FILE__));
-include Q_PATH.'/application/bootstrap.php';
+
+define("Q_PATH", dirname(__FILE__));
+
+// Подключение всех классов
+include Q_PATH . '/application/bootstrap.php';
+
+
+// Старт приложения
+//$ggg = new BaseController();
+//$ggg->Start();
+BashController::Start();

@@ -47,6 +47,7 @@ class ClassSingleton
 class DB extends ClassSingleton
 {
     protected $query = array();
+
     public function select($select)
     {
         $this->query['select'] = $select;
@@ -135,7 +136,6 @@ class DB extends ClassSingleton
             $raw_query .= $type . ' ' . $query;
         }
         $result = $this->_db->query($raw_query);
-        $this->$query = array();
         return $result;
     }
 
@@ -144,52 +144,4 @@ class DB extends ClassSingleton
         $this->query[' limit'] = $limit[0] . ', ' . $limit[1];
         return $this;
     }
-
 }
-
-class ClassBash extends DB
-{
-    public function Read($page)
-    {
-        $message = array();
-// Подготовка к постраничному выводу
-        $perpage = 10; // Количество отображаемых данных из БД
-        if (empty($page) || ($page <= 0)) {
-            $page = 1;
-        } else {
-
-            $page = (int)$page; // Считывание текущей страницы
-        }
-// Общее количество информации
-        $vse = $this->select('*')->from('bash')->fetch();
-        $pages_count = ceil($vse->rowCount() / $perpage); // Количество страниц
-// Если номер страницы оказался больше количества страниц
-
-        if ($page > $pages_count)
-            $page = $pages_count;
-
-        $start_pos = ($page - 1) * $perpage; // Начальная позиция, для запроса к БД
-
-        $otobr = $this->select('*')->from('bash')->limit(array($start_pos, $perpage))->fetch();
-        foreach ($otobr as $row) {
-            $message[] = array($row[1], $row[0], $row[2]);
-        }
-        //
-        return array(array($page, $pages_count), $message);
-    }
-
-    public function Write($message)
-    {
-        $this->upval(array('tabl' => 'bash', 'id' => 'NULL', 'Message' => $message, 'Rating' => '0'))->fetch();
-    }
-
-    public function Rating($id_reting)
-    {
-        $this->update('bash')->set(array('Rating' => 'Rating' . $id_reting[1] . '1'))->where(array('id' => $id_reting[0]))->fetch();
-    }
-
-}
-
-
-
-
