@@ -8,7 +8,7 @@ function send_message() {
 
     var message_text = $('#text_input').val();
 
-    if (message_text !== "") {
+    if (message_text != "" && message_text != "Добавлено") {
         $.post(
             "http://tes/add/",
             {

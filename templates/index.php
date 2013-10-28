@@ -19,10 +19,11 @@ for ($j = 1; $j <= $pages_count; $j++) {
 <?php foreach ($message as $arr) { ?>
 
     <?php
+    echo ' <a  href=' . $_SERVER['php_self'] . '/view/' . $arr[1] . '>' . $arr[1] . '</a> </br>';
     echo '<a href="#" onclick="rating(' . "'" . $arr[1] . "'" .
         '); return false;">+</a> ' . $arr[2] . '<a href="#" onclick="ratint(' .
         "'" . $arr[1] . "'" . '); return false;">-</a> ';
-    echo ' <a  href=' . $_SERVER['php_self'] . '/view/' . $arr[1] . '>' . $arr[1] . '</a> ';
+
     ?>
     <p><?php
         echo $arr[0];
@@ -32,4 +33,4 @@ for ($j = 1; $j <= $pages_count; $j++) {
 
 
 
-    //<?php include('/footer.php'); ?>
+<?php include('/footer.php'); ?>

@@ -26,7 +26,7 @@ class BaseController
         $className = get_called_class();
         $controller = new $className();
         if (!method_exists($this, $action_name)) {
-            throw new Error404();
+            //    throw new Error404('Error 404');
         }
         $controller->$action_name($action_parameters);
     }

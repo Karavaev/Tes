@@ -1,4 +1,6 @@
-<?php include('/header.php'); ?>
+<?php include('/header.php');
+echo '<a href=' . $_SERVER['php_self'] . '/index> Главная </a>';
+?>
 
     <h1>Вывод информации</h1>
 
@@ -7,7 +9,6 @@
     echo '<a href="#" onclick="rating(' . "'" . $arr[1] . "'" .
         '); return false;">+</a> ' . $arr[2] . '<a href="#" onclick="ratint(' .
         "'" . $arr[1] . "'" . '); return false;">-</a> ';
-    echo ' <a  href=' . $_SERVER['php_self'] . '/view/' . $arr[1] . '>' . $j . '</a> ';
     ?>
     <p><?php
         echo $arr[0];
