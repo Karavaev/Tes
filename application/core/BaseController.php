@@ -25,9 +25,16 @@ class BaseController
         $action_name = 'action' . ucfirst($action_name);
         $className = get_called_class();
         $controller = new $className();
-        if (!method_exists($this, $action_name)) {
-            //    throw new Error404('Error 404');
+        try {
+            if (!method_exists($className, $action_name)) {
+                throw new Error404();
+            } else {
+                $controller->$action_name($action_parameters);
+            }
+        } catch (Error404 $e) {
+            echo 'страница не найдена';
         }
-        $controller->$action_name($action_parameters);
     }
+
+
 }

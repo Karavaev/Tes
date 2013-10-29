@@ -30,12 +30,13 @@ class BashController extends WebController
 
         if ($page > $pages_count)
             $page = $pages_count;
+        if ($page != 0) {
+            $start_pos = ($page - 1) * $perpage; // Начальная позиция, для запроса к БД
 
-        $start_pos = ($page - 1) * $perpage; // Начальная позиция, для запроса к БД
-
-        $otobr = $this->db->select('*')->from('bash')->limit(array($start_pos, $perpage))->fetch();
-        foreach ($otobr as $row) {
-            $message[] = array($row[1], $row[0], $row[2]);
+            $otobr = $this->db->select('*')->from('bash')->limit(array($start_pos, $perpage))->fetch();
+            foreach ($otobr as $row) {
+                $message[] = array($row[1], $row[0], $row[2]);
+            }
         }
         echo $this->render('templates/index.php', array('page' => $page, 'pages_count' => $pages_count, 'message' => $message));
     }
@@ -64,6 +65,7 @@ class BashController extends WebController
             }
         }
     }
+
     public function actionView($param)
     {
         $id = $param[0];

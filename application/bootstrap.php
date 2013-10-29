@@ -3,8 +3,8 @@
  * Массив, хранящий имя класса и путь до файла
  */
 $__autoload = array(
-    'Error404' => '/application/core/exceptions.php',
-     'DB' => '/application/core/bd/bd.php',
+    'Error404' => '/application/core/exception.php',
+    'DB' => '/application/core/bd/bd.php',
     'WebController' => '/application/core/web/WebController.php',
     'BaseController' => '/application/core/BaseController.php',
 

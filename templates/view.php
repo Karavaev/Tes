@@ -2,7 +2,7 @@
 echo '<a href=' . $_SERVER['php_self'] . '/index> Главная </a>';
 ?>
 
-    <h1>Вывод информации</h1>
+    <h1>Вывод одиночного сообщения</h1>
 
 <?php foreach ($message as $arr) { ?>
     <?php
