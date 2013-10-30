@@ -28,9 +28,8 @@ class BaseController
         try {
             if (!method_exists($className, $action_name)) {
                 throw new Error404();
-            } else {
-                $controller->$action_name($action_parameters);
             }
+            $controller->$action_name($action_parameters);
         } catch (Error404 $e) {
             echo 'страница не найдена';
         }
