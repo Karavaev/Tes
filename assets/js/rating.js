@@ -1,25 +1,30 @@
 function rating(a) {
+    var url = document.URL.replace(/(\\|\/)[^\\\/]*$/, '/')+'quote/';
+    
+    function onAjaxSuccess() {
+      location.reload();
+    }
+    
     $.post(
-        "http://tes/quote/",
+        url,
         {
             action: 'izmenenie',
             id: a,
             znak: '+'
 
         },
-        onAjaxSuccess
+        onAjaxSuccess()
     );
 
-    function onAjaxSuccess() {
-        location.reload();
-    }
+
 
 }
 ;
 
 function ratint(a) {
+     var url = document.URL.replace(/(\\|\/)[^\\\/]*$/, '/')+'quote/';
     $.post(
-        "http://tes/quote/",
+        url,
         {
             action: 'izmenenie',
             id: a,

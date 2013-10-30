@@ -11,7 +11,7 @@ class BashController extends WebController
 
     public function actionIndex($param)
     {
-        $page = $param[0];
+        $page = (int)$param[0];
 
         $message = array();
 // Подготовка к постраничному выводу
@@ -20,7 +20,7 @@ class BashController extends WebController
             $page = 1;
         } else {
 
-            $page = (int)$page; // Считывание текущей страницы
+            //$page = (int)$page; // Считывание текущей страницы
         }
 
 // Общее количество информации
@@ -44,7 +44,8 @@ class BashController extends WebController
     public function actionAdd()
     {
         if (isset($_POST['action']) && $_POST['action'] == 'add_message') {
-            $message = $_POST['message_text'];
+            $message1=htmlspecialchars($_POST['message_text']);
+            $message=$this->db->quote($message1);
             if (isset($message)) {
                 $this->db->upval(array('tabl' => 'bash', 'id' => 'NULL', 'Message' => $message, 'Rating' => '0'))->fetch();
             }
@@ -56,8 +57,8 @@ class BashController extends WebController
     public function actionQuote()
     {
         if (isset($_POST['action']) && $_POST['action'] == 'izmenenie') {
-            $id = $_POST['id'];
-            $znak = $_POST['znak'];
+            $id = (int)$_POST['id'];
+            $znak = substr($_POST['znak'], 0, 1);;
             if (isset($id) && isset($znak)) {
 
                 $this->db->update('bash')->set(array('Rating' => 'Rating' . $znak . '1'))->where(array('id' => $id))->fetch(); //update('bash')->set(array('Rating' => 'Rating' . $_POST['znak'] . '1'))->where(array('id' => $_POST['id']))->fetch();
@@ -68,7 +69,7 @@ class BashController extends WebController
 
     public function actionView($param)
     {
-        $id = $param[0];
+        $id = (int)$param[0];
         $otobr = $this->db->select('*')->from('bash')->where(array('id' => $id))->fetch();
         foreach ($otobr as $row) {
             $message[] = array($row[1], $row[0], $row[2]);

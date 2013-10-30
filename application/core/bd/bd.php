@@ -13,7 +13,12 @@ class ClassSingleton
         $username = "mysql";
         $password = "mysql";
         $port = "3306";
-        $this->_db = new PDO('mysql:host=' . $host . ';dbname=' . $database . ';port=' . $port, $username, $password);
+        /*$host = 'mysql.100ms.ru';
+        $database = "u857322734_bash";
+        $username = "u857322734_test";
+        $password = "igra123";
+        $port = "3306";*/
+        $this->_db = new PDO('mysql:host=' . $host . ';dbname=' . $database.';port='.$port , $username, $password);
     }
 
 // Защищаем от создания через new Singleton
@@ -61,7 +66,7 @@ class DB extends ClassSingleton
         foreach ($values as $key => $value) {
             if ($key != 'tabl') {
                 $stolb .= "`" . $key . "`,";
-                $znach .= "'" . $value . "',";
+                $znach .=  "'".$value."',";
             } else {
                 $tabl = $value;
             }
@@ -144,4 +149,9 @@ class DB extends ClassSingleton
         $this->query[' limit'] = $limit[0] . ', ' . $limit[1];
         return $this;
     }
+    public function quote($string)
+    {
+    return $this->_db->quote($string);
+    }
+    
 }

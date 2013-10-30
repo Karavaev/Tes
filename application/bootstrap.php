@@ -3,7 +3,7 @@
 function __autoload($class)
 {
     $__autoload = array(
-        'Error404' => '/application/core/exception.php',
+        'Error404' => '/application/core/Exception.php',
         'DB' => '/application/core/bd/bd.php',
         'WebController' => '/application/core/web/WebController.php',
         'BaseController' => '/application/core/BaseController.php',

@@ -1,4 +1,4 @@
-<?php include('/header.php'); ?>
+<?php include(Q_PATH . '/templates/header.php'); ?>
 
 <?php
 echo ' <a  href=' . $_SERVER['php_self'] . '/add> Запись сообщений </a> <br/>';
@@ -33,4 +33,4 @@ for ($j = 1; $j <= $pages_count; $j++) {
 
 
 
-<?php include('/footer.php'); ?>
+<?php include(Q_PATH . '/templates/footer.php'); ?>

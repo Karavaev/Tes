@@ -1,4 +1,4 @@
-<?php include('/header.php');
+<?php include(Q_PATH . '/templates/header.php');
 echo '<a href=' . $_SERVER['php_self'] . '/index> Главная </a>';
 ?>
 
@@ -16,4 +16,4 @@ echo '<a href=' . $_SERVER['php_self'] . '/index> Главная </a>';
     </p>
 <?php } ?>
 
-<?php include('/footer.php'); ?>
+<?php include(Q_PATH . '/templates/footer.php'); ?>
